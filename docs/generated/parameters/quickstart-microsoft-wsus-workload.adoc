@@ -1,0 +1,47 @@
+
+.Network configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|VPC ID
+(`VPCID`)|`**__Requires Input__**`|ID of your existing VPC for deployment.|VPC CIDR
+(`VPCCIDR`)|`10.0.0.0/16`|CIDR block for the VPC.|Private subnet 1 ID
+(`PrivateSubnet1ID`)|`**__Requires Input__**`|ID of private subnet 1 in Availability Zone 1 for the workload (e.g., subnet-a0246dcd).
+|===
+.Microsoft Active Directory configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Active Directory domain
+(`DomainJoin`)|`No. Please keep WSUS as a standalone Windows instance.`|Choose Yes to join the WSUS instance to an Active Directory domain.|Domain DNS name
+(`DomainDNSName`)|`example.com`|Fully qualified domain name (FQDN).|Domain NetBIOS name
+(`DomainNetBIOSName`)|`EXAMPLE`|NetBIOS name of the domain (up to 15 characters) for users of earlier versions of Windows.|Domain admin user name
+(`DomainAdminUser`)|`StackAdmin`|User name for the account that will be used as Domain Administrator. This is separate from the default "Administrator" account.|Domain admin password
+(`DomainAdminPassword`)|`**__Requires Input__**`|Password for the Domain Administrator.|Security group ID for AD domain members
+(`DomainMemberSGID`)|`**__Requires Input__**`|ID of the domain member security group (e.g., sg-7f16e910).
+|===
+.Amazon EC2 configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Server NetBIOS name
+(`WSUSServerNetBIOSName`)|`WSUS`|NetBIOS name of the WSUS server (up to 15 characters).|SSH key name
+(`KeyPairName`)|`**__Requires Input__**`|Name of an existing EC2 key pair. All instances will launch with this key pair.|Windows version
+(`WindowsVersion`)|`Windows2019Core`|The Windows version for running WSUS. Windows Core is recommended for production environments.|Workload server instance type
+(`WorkloadInstanceType`)|`r5.2xlarge`|Type of EC2 instance for the workload instance.|Storage volume size
+(`StorageVolumeSize`)|`500`|Capacity of the volume used to store update files (GB).
+|===
+.WSUS configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Supported languages
+(`WSUSLanguagesList`)|`en`|Comma-delimited list of WSUS enabled languages.|WSUS products
+(`WSUSProductList`)|`SQL Server 2012 R2, SQL Server 2016, SQL Server 2017, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019`|The platforms for which you want WSUS to receive updates.|WSUS classifications
+(`WSUSClassification`)|`Applications, Update Rollups, Security Updates, Critical Updates, Service Packs, Updates, Drivers, Driver Sets`|Types of updates that can be obtained through WSUS.|Number of WSUS synchronizations per day
+(`WSUSNumOfSyncsPerDay`)|`1`|The number of WSUS synchronizations per day.
+|===
+.AWS Quick Start configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Quick Start S3 bucket name
+(`QSS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 bucket region
+(`QSS3BucketRegion`)|`us-east-1`|The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.|Quick Start S3 key prefix
+(`QSS3KeyPrefix`)|`quickstart-microsoft-wsus/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).
+|===

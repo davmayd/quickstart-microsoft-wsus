@@ -1,1 +1,25 @@
-// placeholder
+:template_aws_cloudformation_stack:
+:template_aws_cloudformation_waitcondition:
+:template_aws_cloudformation_waitconditionhandle:
+:template_aws_ec2_instance:
+:template_aws_ec2_securitygroup:
+:template_aws_iam_instanceprofile:
+:template_aws_iam_policy:
+:template_aws_iam_role:
+:template_aws_lambda_function:
+:template_aws_logs_loggroup:
+:template_aws_secretsmanager_secret:
+:template_aws_ssm_document:
+:template_cloudformation:
+:template_custom_wincorebaseamiinfo:
+:template_custom_winfullbaseamiinfo:
+:template_custom_winfullsql2017standardamiinfo:
+:template_ec2:
+:template_iam:
+:template_lambda:
+:template_logs:
+:template_secretsmanager:
+:template_ssm:
+:template_wincorebaseamiinfo:
+:template_winfullbaseamiinfo:
+:template_winfullsql2017standardamiinfo:

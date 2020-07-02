@@ -1,1 +1,6 @@
-// placeholder
+
+=== Launch into a new VPC
+include::quickstart-microsoft-wsus-master.adoc[]
+
+=== Launch into an existing VPC
+include::quickstart-microsoft-wsus-workload.adoc[]

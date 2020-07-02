@@ -1,0 +1,50 @@
+
+.Amazon VPC configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Availability Zones
+(`AvailabilityZones`)|`**__Requires Input__**`|List of Availability Zones to use for the subnets in the VPC. Only two Availability Zones are used for this deployment, and the logical order of your selections is preserved.|VPC CIDR
+(`VPCCIDR`)|`10.0.0.0/16`|CIDR block for the VPC|Private subnet 1 CIDR
+(`PrivateSubnet1CIDR`)|`10.0.0.0/19`|CIDR block for private subnet 1 located in Availability Zone 1.|Private subnet 2 CIDR
+(`PrivateSubnet2CIDR`)|`10.0.32.0/19`|CIDR block for private subnet 2 located in Availability Zone 2.|Public subnet 1 CIDR
+(`PublicSubnet1CIDR`)|`10.0.128.0/20`|CIDR block for the public (DMZ) subnet 1 located in Availability Zone 1.|Public subnet 2 CIDR
+(`PublicSubnet2CIDR`)|`10.0.144.0/20`|CIDR block for the public (DMZ) subnet 2 located in Availability Zone 2.
+|===
+.Amazon EC2 configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Server NetBIOS name
+(`WSUSServerNetBIOSName`)|`WSUS`|NetBIOS name of the WSUS server (up to 15 characters).|SSH key name
+(`KeyPairName`)|`**__Requires Input__**`|Name of an existing EC2 key pair. All instances will launch with this key pair.|Storage volume size
+(`StorageVolumeSize`)|`500`|Capacity of the volume used to store update files (GB).|Windows version
+(`WindowsVersion`)|`Windows2019Core`|The Windows version for running WSUS. Windows Core is recommended for production environments.|Workload server instance type
+(`WorkloadInstanceType`)|`r5.2xlarge`|Type of EC2 instance for the workload instance.
+|===
+.WSUS configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Supported languages
+(`WSUSLanguagesList`)|`en`|Comma-delimited list of WSUS enabled languages.|WSUS products
+(`WSUSProductList`)|`Microsoft SQL Server 2012 R2, Microsoft SQL Server 2016, Microsoft SQL Server 2017, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019`|Configure the Platforms that you want WSUS to receive updates|WSUS classifications
+(`WSUSClassification`)|`Applications, Update Rollups, Security Updates, Critical Updates, Service Packs, Updates, Drivers, Driver Sets`|Types of updates that can be obtained through WSUS.|Number of WSUS synchronizations per day
+(`WSUSNumOfSyncsPerDay`)|`1`|The number of WSUS synchronizations per day.
+|===
+.Remote Desktop Gateway configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Include RD Gateway
+(`IncludeRDGW`)|`No. Please do not include a Remote Desktop Gateway autoscaling group.`|Remote Desktop Gateway (RD Gateway). Choose Yes to include an RD Gateway in an Auto Scaling group.|Allowed RD Gateway external access CIDR
+(`RDGWCIDR`)|`10.0.0.0/16`|Allowed CIDR block for external access to the RD Gateway instances.|Number of RD Gateway hosts
+(`NumberOfRDGWHosts`)|`1`|The number of RD Gateway hosts to create.|RD Gateway instance type
+(`RDGWInstanceType`)|`t2.large`|EC2 instance type for the RD Gateway instances.|RD Gateway admin user
+(`AdminUser`)|`Admin`|User name for the RD Gateway administrative account.|RD Gateway admin password
+(`AdminPassword`)|`**__Requires Input__**`|Password for the RD Gateway administrative account. Must be at least 8 characters containing letters, numbers and symbols.
+|===
+.AWS Quick Start configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default Value|Description|Quick Start S3 bucket name
+(`QSS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 bucket region
+(`QSS3BucketRegion`)|`us-east-1`|The AWS Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.|Quick Start S3 key prefix
+(`QSS3KeyPrefix`)|`quickstart-microsoft-wsus/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slash (/).
+|===
